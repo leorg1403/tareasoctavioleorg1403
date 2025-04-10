@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow</title>
+</head>
+<body>
+    <a href="blog-html.html">back</a>
+    <h1>Flujo de trabajo con Git y GitHub</h1>
+    <ol>
+        <li>Preparación del entorno</li>
+        <p>
+            Primero debes configurar tu identidad para que tus acciones queden registradas.
+            Utiliza el comando git config para establecer tu nombre y email.
+            Después, usa git init para inicializar el repositorio en tu carpeta.
+        </p>
+        <li>Manejo de repositorios remotos</li>
+        <p>
+            Para trabajar con repositorios en GitHub necesitas conectar tu repo local con uno remoto.<br>
+            Puedes usar git clone para obtener una copia completa de un proyecto
+            existente, o git remote add para vincular tu repo local con uno remoto.
+        </p>
+        <li>Ciclo básico</li>
+        <p>
+            El flujo de trabajo esencial consiste en modificar archivos, revisarlos con git status,
+            añadirlos al área de preparación con git add y luego confirmar los cambios 
+            con git commit. Este ciclo se repite mientras desarrollas.
+        </p>
+        <li>Manejo de ramas</li>
+        <p>
+            Las ramas son fundamentales para el desarrollo en paralelo. Con git branch
+            puedes ver y crear ramas. Para moverte entre ramas usa git checkout o 
+            git switch. Crear una nueva rama y moverte a ella es tan sencillo como
+            usar git checkout -b nueva-rama.
+        </p>
+        <li>Sincronización con GitHub</li>
+        <p>
+            Para sincronizar con el repositorio remoto, usa git fetch para ver 
+            cambios remotos antes de aplicarlos. Con git pull puedes descargar 
+            y aplicar esos cambios. Para subir tus propios cambios usa git push.
+        </p>
+        <li>Integración de código</li>
+        <p>
+            Para unir diferentes ramas de desarrollo usamos git merge. Este proceso
+            puede generar conflictos si se modificaron las mismas líneas en ambas ramas. En ese caso, 
+            deberás resolver manualmente los conflictos y luego hacer un commit de la integración.
+        </p>
+    </ol>
+</body>
+</html>
