@@ -1,0 +1,105 @@
+* {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.pagina-completa {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.encabezado {
+    background-color: #1a2d5f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo-texto {
+    margin-left: 80px;
+    flex-grow: 2;
+    font-weight: bold;
+}
+
+.menu-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+    margin-left: 100px;
+}
+
+.menu-nav p {
+    margin: 0 15px;
+}
+
+.banner-principal {
+    background-color: #e08c1a;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.banner-principal p {
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.formulario-contacto {
+    background-color: #1a2d5f;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.texto-boletin {
+    padding: 0 15px;
+}
+
+.galeria-tecnologias {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 30px 15px;
+    gap: 30px;
+}
+
+.galeria-tecnologias p {
+    color: black;
+    text-align: center;
+}
+
+.tarjeta-tecnologia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagen-tech {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.pie-pagina {
+    background-color: #1a2d5f;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
