@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basicos</title>
+    <link rel = "stylesheet" href="styles.css">
+
+    <style>
+        /* Estilos para los ejemplos */
+        .ejemplo-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+        }
+        
+        .section {
+            margin: 40px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .flex-container-demo {
+            display: flex;
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        
+        .flex-container-demo > div {
+            background-color: #3498db;
+            color: white;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+        }
+        
+        .grid-container-demo {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+        
+        .grid-container-demo > div {
+            background-color: #3498db;
+            border: 1px solid white;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        
+        .box-model-demo {
+            width: 200px;
+            padding: 20px;
+            border: 5px solid #27ae60;
+            margin: 20px;
+            background-color: #f1c40f;
+            color: black;
+            text-align: center;
+        }
+        
+        .transition-demo {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .transition-demo:hover {
+            transform: scale(1.1);
+            background-color: #e74c3c;
+        }
+        
+        @keyframes slide-in {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .animation-demo {
+            width: 100px;
+            height: 100px;
+            background-color: #9b59b6;
+            animation: slide-in 2s ease forwards;
+        }
+        
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            border: 1px solid #eee;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #eee;
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class = "header-content">
+            <img src="imgGit.png" alt="Imagen de terminal y código">
+            <h1>Blog Leonardo Rdz</h1>
+            
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="workflow-html.html">Flujo de trabajo con Git y GitHub</a></li>
+                <li><a href="comandos-html.html">Comandos básicos de Bash</a></li>
+                <li><a href="css-basicos.html">Metodos basicos de css</a></li>
+                </ul>
+        </nav>
+    </header>
+
+    <h1>CSS Basicos</h1>
+    <p> CSS cascade style sheet es la forma en la que se puede dar estilo estatico a una pagina web</p>
+    <div class = "section">
+        <h2>CSS se puede aplicar de tres formas diferentes:</h2>
+    <ul>
+        <li><strong>CSS en linea:</strong> Se aplica directamente en el elemento HTML.
+            <div class = "ejemplo-container">
+                <h3>Ejemplo:</h3>
+                <pre>&lt;p style="color: blue; font-size: 16px;"&gt; Este es un parrafo con estilo en linea&lt;/p&gt;</pre>
+                <p style="color: blue; font-size: 16px;"> Este es un parrafo con estilo en linea</p>
+            </div>
+        </li>
+
+        <li><strong>CSS interno:</strong> Se aplica dentro de la etiqueta <code>&lt;style&gt;</code> en la sección <code>&lt;head&gt;</code> del documento HTML.
+            <div class="ejemplo-container">
+                <h3>Ejemplo:</h3>
+                <pre>&lt;head&gt;
+    &lt;style&gt;
+    p {
+        color: green;
+        font-size: 18px;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;</pre>
+            </div>
+        </li>
+
+        <li><strong>CSS externo:</strong> Se aplica a través de un archivo CSS separado que se vincula al documento HTML.
+            <div class="ejemplo-container">
+                <h3>Ejemplo:</h3>
+                <pre>&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</pre>
+            </div>
+        </li>
+    </ul>
+    </div>
+    
+    <div class ="section">
+        <h2>Selectores CSS</h2>
+        <p>Los selectores determinan a que elemento se le aplicara un estilo</p>
+        
+        <div class="ejemplo-container">
+            <h3>Ejemplo de los selectores</h3>
+            <pre>/* Selector tipo*/
+        p{color: blue;}
+
+/* Selector de clase*/
+.mi-clase{font-size: 20px;} 
+
+/* Selector de id*/
+#mi-id {font-weight: bold;}
+
+/* Selector descendiente*/
+article p{line-height. 1.5;}
+
+/* Selector hijo directo*/
+ul > li{list-style-type: square;}
+
+/* Selector de atributo*/
+input[type="text"]{border: 1px solid black;}
+            </pre>
+            <p>Párrafo normal</p>
+            <p style="color: blue;">Párrafo con selector de tipo</p>
+            <p class="demo-selector" style="font-size: 20px;">Párrafo con selector de clase</p>
+            <p id="demo-id" style="font-weight: bold;">Párrafo con selector de ID</p>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Modelo de Caja (Box Model)</h2>
+        <p>Todo elemento HTML es una caja rectangular compuesta de contenido, padding, borde y margen:</p>
+        
+        <div class="ejemplo-container">
+            <h3>Ejemplo de Box Model:</h3>
+            <pre>.box {
+width: 200px;         /* Ancho del contenido */
+padding: 20px;        /* Espacio interno */
+border: 5px solid green;   /* Borde */
+margin: 20px;         /* Espacio externo */
+background-color: yellow;
+}</pre>
+            
+            <div class="box-model-demo">
+                Contenido
+            </div>
+            <p><strong>↑</strong> Esta caja tiene: width 200px, padding 20px, borde 5px, y margen 20px</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Flexbox (Layout Unidimensional)</h2>
+        <p>Flexbox es un modo de diseño que permite distribuir elementos en una dirección (fila o columna):</p>
+        
+        <div class="ejemplo-container">
+            <h3>Ejemplo de Flexbox:</h3>
+            <pre>.contenedor {
+display: flex;
+justify-content: space-between;
+}</pre>
+            
+            <div class="flex-container-demo" style="justify-content: space-between;">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+            </div>
+            
+            <h4>Alineación central:</h4>
+            <pre>.contenedor {
+display: flex;
+justify-content: center;
+}</pre>
+            
+            <div class="flex-container-demo" style="justify-content: center;">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Grid (Layout Bidimensional)</h2>
+        <p>Grid permite crear diseños en filas y columnas simultáneamente:</p>
+        
+        <div class="ejemplo-container">
+            <h3>Ejemplo de Grid:</h3>
+            <pre>.contenedor {
+display: grid;
+grid-template-columns: auto auto auto;
+gap: 10px;
+}</pre>
+            
+            <div class="grid-container-demo">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Transiciones y Animaciones</h2>
+        <p>Las transiciones permiten cambiar suavemente de un estilo a otro:</p>
+        
+        <div class="ejemplo-container">
+            <h3>Ejemplo de transición (pasa el cursor por encima):</h3>
+            <pre>.elemento {
+transition: transform 0.3s ease;
+}
+.elemento:hover {
+transform: scale(1.1);
+}</pre>
+            
+            <div class="transition-demo">Hover me</div>
+            
+            <h3>Ejemplo de animación:</h3>
+            <pre>@keyframes slide-in {
+from { transform: translateX(-100%); }
+to { transform: translateX(0); }
+}
+.elemento {
+animation: slide-in 2s ease;
+}</pre>
+            
+            <button onclick="this.nextElementSibling.style.animation = 'none'; setTimeout(() => this.nextElementSibling.style.animation = 'slide-in 2s ease forwards', 10)">Reiniciar animación</button>
+            <div class="animation-demo">Animado</div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <h2>Variables CSS (Custom Properties)</h2>
+        <p>Las variables CSS permiten reutilizar valores en todo el código:</p>
+        
+        <div class="ejemplo-container">
+            <h3>Ejemplo:</h3>
+            <pre>:root {
+--color-primario: #007bff;
+--espaciado: 20px;
+}
+
+.elemento {
+color: var(--color-primario);
+margin: var(--espaciado);
+}</pre>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Blog Leonardo Rdz. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
