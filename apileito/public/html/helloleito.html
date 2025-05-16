@@ -1,12 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../js/helloleito.js"></script>
-    <title>Hello Server</title>
+    <title>API de Gestión de Items y Usuarios</title>
+    <link rel="stylesheet" href="../css/helloleito.css">
 </head>
 <body>
-    <h1>Hello Server</h1>
+    <header>
+        <h1>API de Gestión de Items y Usuarios</h1>
+        <p>Sistema para administrar items de juego y usuarios</p>
+    </header>
+
+    <main>
+        <section class="documentacion">
+            <h2>Documentación de la API</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Endpoint</th>
+                        <th>Descripción</th>
+                        <th>Parámetros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Items -->
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/items</td>
+                        <td>Obtiene todos los items del catálogo</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/items/:id</td>
+                        <td>Obtiene un item específico por ID</td>
+                        <td>id - ID del item</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/api/items</td>
+                        <td>Crea un nuevo item</td>
+                        <td>nombre, tipo, efecto</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/api/items/:id</td>
+                        <td>Actualiza un item existente</td>
+                        <td>id - ID del item, nombre?, tipo?, efecto?</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/api/items/:id</td>
+                        <td>Elimina un item</td>
+                        <td>id - ID del item</td>
+                    </tr>
+                    
+                    <!-- Usuarios -->
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/usuarios</td>
+                        <td>Obtiene todos los usuarios con sus items</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/usuarios/:id</td>
+                        <td>Obtiene un usuario específico por ID con sus items</td>
+                        <td>id - ID del usuario</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/api/usuarios</td>
+                        <td>Crea un nuevo usuario</td>
+                        <td>nombre, correo, items?</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/api/usuarios/:id</td>
+                        <td>Actualiza un usuario existente</td>
+                        <td>id - ID del usuario, nombre?, correo?, items?</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/api/usuarios/:id</td>
+                        <td>Elimina un usuario</td>
+                        <td>id - ID del usuario</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="pruebas">
+            <h2>Pruebas de API</h2>
+            
+            <div class="prueba-seccion">
+                <h3>Items</h3>
+                <button id="get-items">Obtener todos los Items</button>
+                <div class="form-group">
+                    <label for="get-item-id">ID del Item:</label>
+                    <input type="number" id="get-item-id" min="1">
+                    <button id="get-item-by-id">Obtener Item por ID</button>
+                </div>
+
+                <div class="form-group">
+                    <h4>Crear Item</h4>
+                    <label for="item-nombre">Nombre:</label>
+                    <input type="text" id="item-nombre">
+                    
+                    <label for="item-tipo">Tipo:</label>
+                    <input type="text" id="item-tipo">
+                    
+                    <label for="item-efecto">Efecto:</label>
+                    <input type="text" id="item-efecto">
+                    
+                    <button id="create-item">Crear Item</button>
+                </div>
+
+                <div class="form-group">
+                    <h4>Actualizar Item</h4>
+                    <label for="update-item-id">ID:</label>
+                    <input type="number" id="update-item-id" min="1">
+                    
+                    <label for="update-item-nombre">Nombre:</label>
+                    <input type="text" id="update-item-nombre">
+                    
+                    <label for="update-item-tipo">Tipo:</label>
+                    <input type="text" id="update-item-tipo">
+                    
+                    <label for="update-item-efecto">Efecto:</label>
+                    <input type="text" id="update-item-efecto">
+                    
+                    <button id="update-item">Actualizar Item</button>
+                </div>
+
+                <div class="form-group">
+                    <h4>Eliminar Item</h4>
+                    <label for="delete-item-id">ID:</label>
+                    <input type="number" id="delete-item-id" min="1">
+                    <button id="delete-item">Eliminar Item</button>
+                </div>
+            </div>
+
+            <div class="prueba-seccion">
+                <h3>Usuarios</h3>
+                <button id="get-usuarios">Obtener todos los Usuarios</button>
+                <div class="form-group">
+                    <label for="get-usuario-id">ID del Usuario:</label>
+                    <input type="number" id="get-usuario-id" min="1">
+                    <button id="get-usuario-by-id">Obtener Usuario por ID</button>
+                </div>
+
+                <div class="form-group">
+                    <h4>Crear Usuario</h4>
+                    <label for="usuario-nombre">Nombre:</label>
+                    <input type="text" id="usuario-nombre">
+                    
+                    <label for="usuario-correo">Correo:</label>
+                    <input type="email" id="usuario-correo">
+                    
+                    <label for="usuario-items">Items (IDs separados por coma):</label>
+                    <input type="text" id="usuario-items" placeholder="1,2,3">
+                    
+                    <button id="create-usuario">Crear Usuario</button>
+                </div>
+
+                <div class="form-group">
+                    <h4>Actualizar Usuario</h4>
+                    <label for="update-usuario-id">ID:</label>
+                    <input type="number" id="update-usuario-id" min="1">
+                    
+                    <label for="update-usuario-nombre">Nombre:</label>
+                    <input type="text" id="update-usuario-nombre">
+                    
+                    <label for="update-usuario-correo">Correo:</label>
+                    <input type="email" id="update-usuario-correo">
+                    
+                    <label for="update-usuario-items">Items (IDs separados por coma):</label>
+                    <input type="text" id="update-usuario-items" placeholder="1,2,3">
+                    
+                    <button id="update-usuario">Actualizar Usuario</button>
+                </div>
+
+                <div class="form-group">
+                    <h4>Eliminar Usuario</h4>
+                    <label for="delete-usuario-id">ID:</label>
+                    <input type="number" id="delete-usuario-id" min="1">
+                    <button id="delete-usuario">Eliminar Usuario</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="resultados">
+            <h2>Resultados</h2>
+            <div id="resultado" class="resultado-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>API de Gestión de Items y Usuarios - Desarrollado por Leonardo</p>
+    </footer>
+
+    <script src="../js/helloleito.js"></script>
 </body>
 </html>
